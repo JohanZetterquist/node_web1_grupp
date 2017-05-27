@@ -1,14 +1,8 @@
 <%- include header.ejs %>
-<!--<h2>Visa lediga bilar mellan datum</h2>
-<form id="bookings_from_to" action="/min-sida" method="post">
-<input type="date" name="book_from" value="2017-01-20">
-<input type="date" name="book_to" value="2017-02-18">
-<input type="submit">
-</form>-->
 
 <div class="confirm">
   <p></p>
-  <input type="submit" value="Bekräfta bokning">
+  <input type="submit" value="Stäng">
 </div>
 
 <div class="cars">
@@ -21,33 +15,17 @@
         <div class="divTableHead">Märke</div>
         <div class="divTableHead">Automat</div>
         <div class="divTableHead">Takräcke</div>
+        <div class="divTableHead">Säten</div>
         <div class="divTableHead">Pris</div>
-        <div class="divTableHead">Bokad</div>
         <div class="divTableHead">Boka från</div>
         <div class="divTableHead">Boka till</div>
-        <div class="divTableHead">Boka</div>
-        <div class="divTableHead">Avboka</div>
+        <div class="divTableHead"></div>
       </div>
 
-      <% for (var i = 0; i < allcars.length; i++) {
-
-        var car_booked = 0;  //0 = ingen bokning, 1 = av någon annan, 2 = av användaren
-        var car_class = '';
-
-        if (allcars[i].booked) {
-          if (user_id == allcars[i].booked) {
-            car_booked = 2;
-            car_class = 'green';
-          } else {
-            car_booked = 1;
-            car_class = 'red';
-          }
-        }
-
-        %>
+      <% for (var i = 0; i < allcars.length; i++) { %>
 
         <div class="divTableRow">
-          <form data-edit="true" action="/boka-bil" method="post" class="<%= car_class %>">
+          <form data-edit="true" action="/bookings/<%= allcars[i]._id %>" method="delete" class="">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="car_id" value="<%= allcars[i]._id %>">
             <input type="hidden" name="user_id" value="<%= user_id %>">
@@ -71,34 +49,21 @@
               </span>
             </div>
             <div class="divTableCell">
-              <span><%= allcars[i].price %></span>
-            </div>
-            <div class="divTableCell">
-              <span name="booked">
-                <%
-                if (car_booked === 0) {
-                  %>Ledig<%
-                } else if (car_booked === 1) {
-                  %>Upptagen<%
-                } else if (car_booked === 2) {
-                  %>Ja<%
-                }
-                %>
+              <span>
+                <%= allcars[i].seats %>
               </span>
             </div>
             <div class="divTableCell">
-              <input type="date" name="date_from" value="2017-01-23" <% if (car_booked !== 0) { %>disabled<% } %>>
+              <span><%= allcars[i].price %> kr/dag</span>
             </div>
             <div class="divTableCell">
-              <input type="date" name="date_to" value="2017-02-15" <% if (car_booked !== 0) { %>disabled<% } %>>
+              <input type="date" name="date_from" value="2017-01-23">
             </div>
             <div class="divTableCell">
-
-              <input type="submit" value="Boka" data-meth="POST" <% if (car_booked !== 0) { %>disabled<% } %>>
-
+              <input type="date" name="date_to" value="2017-02-15">
             </div>
             <div class="divTableCell">
-              <input type="submit" value="Avboka" data-meth="DELETE" <% if (car_booked !== 2) { %>disabled<% } %> >
+              <input type="submit" value="Boka" data-url="/bookings" data-meth="POST">
             </div>
 
           </form>
@@ -111,6 +76,8 @@
 
     </div>
 
-    <a href="/user/logout">Logout</a>
+    <a href="/users/logout">Logout</a>
 
   </div>
+  <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+  <script src="/js/main.js" type="text/javascript"></script>

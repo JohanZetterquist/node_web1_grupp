@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="/css/style.css">
 
+<div class="confirm">
+  <p></p>
+  <input type="submit" value="Stäng">
+</div>
+
 <div class="form_table">
 
   <h2>Ny bil</h2>
@@ -10,6 +15,7 @@
         <div class="divTableHead">Märke</div>
         <div class="divTableHead">Automat</div>
         <div class="divTableHead">Takräcke</div>
+        <div class="divTableHead">Säten</div>
         <div class="divTableHead">Pris</div>
       </div>
       <div class="divTableRow">
@@ -35,14 +41,17 @@
             </select>
           </div>
           <div class="divTableCell">
-            <input type="text" name="price" placeholder="price"><br>
-          </div>
-        <!--  <div class="divTableCell">
-            <select name="booked">
-              <option value="true">Ja</option>
-              <option value="false" selected>Nej</option>
+            <select name="seats">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
-          </div>-->
+          </div>
+          <div class="divTableCell">
+            <input type="number" name="price" placeholder="price"><br>
+          </div>
           <div class="divTableCell">
             <input type="submit" value="Submit">
           </div>
@@ -61,11 +70,13 @@
         <div class="divTableHead">Märke</div>
         <div class="divTableHead">Automat</div>
         <div class="divTableHead">Takräcke</div>
+        <div class="divTableHead">Säten</div>
         <div class="divTableHead">Pris</div>
-        <div class="divTableHead">Bokad</div>
       </div>
 
-      <% for (var i = 0; i < allcars.length; i++) { %>
+      <% for (var i = 0; i < allcars.length; i++) {
+
+        %>
 
         <div class="divTableRow">
           <form data-edit="true" action="/cars/<%= allcars[i]._id %>" method="post">
@@ -92,10 +103,14 @@
               </select>
             </div>
             <div class="divTableCell">
-              <input type="text" name="price" placeholder="price" value="<%= allcars[i].price %>"><br>
+              <select name="seats">
+                <% for (var s = 1; s <= 5; s++) { %>
+                <option value="<%= s %>" <% if (allcars[i].seats == s) { %> selected <% } %>><%= s %></option>
+                <% } %>
+              </select>
             </div>
             <div class="divTableCell">
-              <% if (!allcars[i].booked) { %> Nej <% } else { %>Av: <%= allcars[i].res_doc[0].username %>  <% } %>
+              <input type="text" name="price" placeholder="price" value="<%= allcars[i].price %>"><br>
             </div>
             <div class="divTableCell">
               <input type="submit" value="Ändra" data-meth="PATCH">

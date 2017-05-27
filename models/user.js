@@ -6,7 +6,8 @@ const UserSchema = mongoose.Schema({
   username: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   firstname: { type: String, required: true },
-  lastname: { type: String, required: true }
+  lastname: { type: String, required: true },
+  email: { type: String, required: true }
 });
 
 //Hook that runs before save to hash and salt password

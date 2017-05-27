@@ -8,6 +8,5 @@ router.use('/', require('./home'));
 router.use('/users', require('./user'));
 router.use('/cars', require('./car_admin'));
 router.use('/bookings', require('./booking'));
-router.use('/boka-bil',   require('./booking'));
 
 module.exports = router

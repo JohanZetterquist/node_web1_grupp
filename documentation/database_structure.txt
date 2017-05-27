@@ -4,12 +4,12 @@
 Table 1: cars
 DB Variable	Typ av info	Beskrivning
 -------------------------------------------
- - id:		unik siffra	desc: unikt id för bilen
  - type:	string		desc: märke
  - automat:	boolean		desc: automatväxlad eller ej
  - rail:	boolean		desc: takräcke eller ej
  - price:	siffra		desc: pris per dag
- - booked:	boolean		desc: bokad eller ledig
+ - seats: 	siffra		desc: antal säten i bilen
+ - booked:	array (table2, id)	desc: array med bokningar för bilen
 
 
 Table 2: bookings
@@ -24,7 +24,6 @@ DB Variable	Typ av info	Beskrivning
 Table 3: users
 DB Variable	Typ av info	Beskrivning
 -------------------------------------------
- - id:		unik siffra	desc: unikt id för användaren
  - username:	string		desc: användarens username
  - password:	string		desc: användarens lösenord
  - firstname:	string		desc: användarens förnamn

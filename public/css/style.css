@@ -101,6 +101,24 @@ form.red {
   display: none;
 }
 
+.confirm.active.red {
+  color: #d61717;
+}
+
+.confirm.active.red input {
+  color: #d61717;
+}
+
+.confirm.active input {
+  border: 0;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  border-bottom: 1px solid #c7c7c7;
+  cursor: pointer;
+}
+
 .confirm.active {
   position: fixed;
   top: 0;
@@ -147,8 +165,8 @@ form.red {
 }
 
 
-.cars .divTableCell:nth-of-type(6),.cars .divTableCell:nth-of-type(7),
-.cars .divTableHead:nth-of-type(6),.cars .divTableHead:nth-of-type(7) {
+.cars .divTableCell:nth-of-type(5),.cars .divTableCell:nth-of-type(6),
+.cars .divTableHead:nth-of-type(5),.cars .divTableHead:nth-of-type(6) {
   width: 130px;
 }
 

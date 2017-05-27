@@ -9,7 +9,8 @@ const CarsBackend = mongoose.Schema({
     automat: { type: Boolean, required: true },
     rail: { type: Boolean, required: true },
     price: { type: Number, required: true },
-    booked: { type: ObjectId }
+    booked: { type: Array, reuired: true },
+    seats: { type: Number, required: true }
 });
 
 module.exports = mongoose.model('Cars', CarsBackend);

@@ -32,8 +32,7 @@ describe('Cars', () => {
                     done();
                 }
             })
-    }).timeout(10000); // longer timeout for slow mlab connectiono
-
+    })
     it('should get the specified car', done => {
         api.get(`/cars/${carId}`)
             .end((err, res) => {
@@ -43,8 +42,7 @@ describe('Cars', () => {
                     done();
                 }
             })
-    })
-    
+    })    
     it('should update a car and return the updated version', done => {
         api.patch(`/cars/${carId}`)
             .send({
@@ -58,7 +56,6 @@ describe('Cars', () => {
                 }
             })
     })
-
     it('should delete a car and return a success message', done => {
         api.delete(`/cars/${carId}`)
             .end((err, res) => {
@@ -68,5 +65,4 @@ describe('Cars', () => {
                     done();
                 }
             })
-    })
-});
+    })});

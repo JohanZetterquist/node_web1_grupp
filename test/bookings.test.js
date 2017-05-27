@@ -51,7 +51,7 @@ describe('Bookings', () => {
                 date_to: Date.now()
             })
             .end((err, res) => {
-                if (err) console.log(err)
+                if (err) done(err)
                 else {
                     res.body.user_id.toString().should.equal(user._id.toString());
                     bookingId = res.body._id;
@@ -64,8 +64,8 @@ describe('Bookings', () => {
                     })
                 }
             })
-    }).timeout(10000);
-
+    });
+    
     it('should delete the booking and return success', done => {
         api.delete(`/bookings/${bookingId}`)
             .end((err, res) => {

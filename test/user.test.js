@@ -38,7 +38,7 @@ describe('Users', () => {
                     done();
                 }
             })
-    }).timeout(10000); // longer timeout for slow mlab connection
+    })
 
     it('should return the requested user', done => {
         api.get(`/users/${username}`)

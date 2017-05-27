@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   Cars.remove({ _id: req.params.id }, error => {
     if (error) res.json({ message: error })
-    else res.json({ message: 'success' })    
+    else res.json({ message: 'success' })
   });
 });
 
@@ -42,7 +42,7 @@ router.patch('/:id', (req, res) => {
     automat: req.body.automat,
     rail: req.body.rail,
     price: req.body.price,
-    booked: req.body.booked
+    seats: req.body.seats
   }}, error => {
     if (error) res.json({ message: error })
     else {
